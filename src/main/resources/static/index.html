@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sml</title>
+</head>
+
+<body>
+
+<a href="#" onclick="get1()">发送get1请求</a>
+<img src="http://localhost:8080/test/get1"/>
+<script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.js"></script>
+<script>
+    /*   function get1() {
+           $.getJSON("http://localhost:8080/test/get1").then(function (value) {
+               console.log(value);
+               alert("sml woaini")
+           })
+       }*/
+    /**
+     * 发送json格式的ajax请求过去后台
+     */
+    /* function get1() {
+         $.ajax({
+             url: "http://localhost:8080/test/postjson",
+             type: "post",
+             contentType: "application/json;charset=utf-8",
+             data: JSON.stringify({name: "sunmingliang"}),
+             success: function (json) {
+                 alert(json);
+             }
+
+         });
+     }*/
+
+    /**
+     * 发送带有
+     * cookie的ajax请求
+     */
+    /* function get1() {
+         $.ajax({
+             url: "http://localhost:8080/test/getCookie",
+             type: "get",
+             xhrFields: {
+                 withCredentials: true//表示发送ajax请求的时候会带上
+                 // cookie
+             },
+             success: function (json) {
+                 alert(json);
+             }
+         });
+
+     }*/
+
+    /**
+     * 发送自定义头信息的ajax请求
+     */
+
+    function get1() {
+
+        $.ajax({
+
+            url: "http://localhost:8080/test/getHeader",
+            type: "get",
+            headers:{
+                "x-header1":"AAA"
+            },
+            beforeSend:function(xhr){
+                xhr.setRequestHeader("x-header2","BBB")
+            },
+            success:function (json) {
+                alert(json.toString())
+
+            }
+
+        });
+
+    }
+</script>
+</body>
+</html>
